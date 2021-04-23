@@ -1,7 +1,7 @@
 
-						**Automatic license plate recognition in unconstrained conditions**
+					
+						#Automatic license plate recognition in unconstrained conditions
 
-------
 
 **File description**
 
@@ -30,13 +30,13 @@ For plate detection, we used Yolo v3, a variant of Darknet, which originally is 
 
 After the first step, we are left with an image of LP which might contain a tilted or warped license plate. So we now perform the four-point perspective transformation on the image, an example of it can be seen below.
 
-![img](https://lh3.googleusercontent.com/UkgiBVOsfR4iRQ9sjHe5YLkgsE-fgZ5_yqvRWjhOkPfhYVnpPWNsduC8Clb4EFF_Qh_aPUpBIPdMtz7hNQ2jWGGMT0k-gPOs7XxKmzBS90uRa9QBpEMYLwnXyaTikIRGuQqMrJdT)
+<img src="assets\ptr.png" alt="ptr" style="zoom:80%;" />
 
 **3) Segmentation and recognition** **:**We use Detectron 2, Facebook AI Research's next generation library that provides state-of-the-art detection and segmentation algorithms. We used Mask R-CNN R50-FPN variant which is used for instance segmentation and classification in a robust manner.
 
 **Results**
 
-<img src="C:\Users\Payal\Pictures\res1.png" alt="res1" style="zoom:80%;" />
+<img src="assets\res1.png" alt="res1" style="zoom:80%;" />
 
 
 
@@ -46,7 +46,7 @@ Detectron 2 is widely used because of its speed in training and inference, the c
 
 **Installation**
 
-<img src="C:\Users\Payal\Pictures\12.png" alt="12" style="zoom: 67%;" />
+<img src="assets\12.png" alt="12" style="zoom: 67%;" />
 
 ​				
 
@@ -54,15 +54,15 @@ Detectron 2 is widely used because of its speed in training and inference, the c
 
 Here is an example to run inference on images that includes just plates : 
 
-<img src="C:\Users\Payal\Pictures\2.png" alt="2" style="zoom: 67%;" />
+<img src="assets\2.png" alt="2" style="zoom: 67%;" />
 
 Here is an example to run inference on images that includes cars (can also include multiple cars) : 
 
-<img src="C:\Users\Payal\Pictures\3.png" alt="3" style="zoom:67%;" />
+<img src="assets\3.png" alt="3" style="zoom:67%;" />
 
 Here is an example to run inference on a video : 
 
-<img src="C:\Users\Payal\Pictures\4.png" alt="4" style="zoom:67%;" />
+<img src="assets\4.png" alt="4" style="zoom:67%;" />
 
 **Inference Time**
 

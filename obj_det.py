@@ -1,4 +1,5 @@
 # This code is written at BigVision LLC. It is based on the OpenCV project. It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
+# This file is taken from this open source github repository - https://github.com/alitourani/yolo-license-plate-detection and has been modified according to our usage.
 
 import cv2 as cv
 import sys
@@ -132,7 +133,7 @@ def get_lps_yolo(frame):
     # Remove the bounding boxes with low confidence
     preds = postprocess(frame, outs)
 
-    print(f"============ HELLO NUMBER PLATES IN YOLO WE GOT IS {len(preds)} ============")
+    # print(f"============ HELLO NUMBER PLATES IN YOLO WE GOT IS {len(preds)} ============")
 
     images = []
 

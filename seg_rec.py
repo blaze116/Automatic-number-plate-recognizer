@@ -2,10 +2,8 @@ import detectron2
 from detectron2.utils.logger import setup_logger
 setup_logger()
 import matplotlib.pyplot as plt
-# import some common libraries
 import numpy as np
 import os, json, cv2, random
-# from google.colab.patches import cv2_imshow
 
 # import some common detectron2 utilities
 from detectron2 import model_zoo
@@ -64,7 +62,6 @@ def get_character_dicts(img_dir):
         dataset_dicts.append(record)
     return dataset_dicts
 
-# get_character_dicts("data")
 for d in ["train"]:
     DatasetCatalog.register("char_" + d, lambda d=d: get_character_dicts("data"))
     MetadataCatalog.get("char_" + d).set(thing_classes=[*mapping.keys()])
@@ -77,15 +74,14 @@ cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rc
 cfg.DATASETS.TRAIN = ("char_train",)
 cfg.DATASETS.TEST = ()
 cfg.DATALOADER.NUM_WORKERS = 4
-# cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")  # Let training initialize from model zoo
 cfg.SOLVER.IMS_PER_BATCH = 2
-cfg.SOLVER.BASE_LR = 0.0008  # pick a good LR
+cfg.SOLVER.BASE_LR = 0.0008   
 cfg.SOLVER.MAX_ITER = 3500    
-cfg.SOLVER.STEPS = []        # do not decay learning rate
-cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128   # faster, and good enough for this toy dataset (default: 512)
-cfg.MODEL.ROI_HEADS.NUM_CLASSES = 36  # only has one class (ballon). (see https://detectron2.readthedocs.io/tutorials/datasets.html#update-the-config-for-new-datasets)
-# NOTE: this config means the number of classes, but a few popular unofficial tutorials incorrect uses num_classes+1 here.
+cfg.SOLVER.STEPS = []
+cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128   
+cfg.MODEL.ROI_HEADS.NUM_CLASSES = 36 
 
+# Required for training
 # os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
 # trainer = DefaultTrainer(cfg) 
 # trainer.resume_or_load(resume=False)
@@ -155,7 +151,6 @@ from detectron2.utils.visualizer import ColorMode
 
 def get_chars(im):
     
-
     im = cv2.resize(im, (2000*im.shape[1]//im.shape[0], 2000))
     output = predictor(im)  # format is documented at https://detectron2.readthedocs.io/tutorials/models.html#model-output-format
     # print(output)

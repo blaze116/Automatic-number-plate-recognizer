@@ -1,4 +1,5 @@
 # pylint: disable=invalid-name, redefined-outer-name, missing-docstring, non-parent-init-called, trailing-whitespace, line-too-long
+# The functions are taken from this open source github repository - https://github.com/quangnhat185/Plate_detect_and_recognize
 import cv2
 import numpy as np
 

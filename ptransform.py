@@ -76,7 +76,8 @@ def persp_transform(image, mat):
     # cv2.waitKey(0)
     return warped
 
-
+# This function takes image which may contain a License plate tilted or warped as an input 
+# and performs perspective transformation on the input image.
 def get_LP(img):
 
     gray1 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -115,7 +116,7 @@ def get_LP(img):
             # print("GOT APPROX = 4")
             break
     else:
-        print("DIDN'T GET")
+        # print("DIDN'T GET")
         return False, None
 
     # print(screenCnt)

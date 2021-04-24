@@ -34,11 +34,10 @@ For license plate detection, we used Yolo v3, a variant of Darknet, which origin
 After the first step, we are left with an image of license plate which might contain a tilted or warped license plate. So we now perform the four-point perspective transformation on the image by assuming the background of the license plate is lighter than the text written on it.
 
 <div align="center">
-    <img src="assets/fpt.png" width=25%/>
-    >>
-    <img src="assets/fpt_a.jpg" width=30%/>
+    <img src="assets/fpt.jpg" width=75%/>
     <p><i><small>You can see an example of perspective tranformation here.</small></i></p>
 </div>
+
 
 ###  Segmentation and recognition
 
@@ -116,9 +115,9 @@ from_video(filename)
 
 ## Team
 
-| ![Ananya](https://avatars.githubusercontent.com/u/73734544?v=4) | ![Payal](https://avatars.githubusercontent.com/u/60649731?v=4) | ![Vishwas](https://avatars.githubusercontent.com/u/67263028?v=4) |
+| <img src="https://avatars.githubusercontent.com/u/73734544?v=4" alt="Ananya" style="zoom: 25%;" /> | <img src="https://avatars.githubusercontent.com/u/60649731?v=4" alt="Payal" style="zoom: 25%;" /> | <img src="https://avatars.githubusercontent.com/u/67263028?v=4" alt="Vishwas" style="zoom: 25%;" /> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Ananya Singh                                                 | Payal Umesh Pote                                             | Vishwas Chepuri                                              |
+| [Ananya Singh](https://github.com/ananya130)                 | [Payal Umesh Pote](https://github.com/payal116)              | [Vishwas Chepuri](https://github.com/vstark21)               |
 
 ## Conclusion
 

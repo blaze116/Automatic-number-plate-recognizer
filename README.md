@@ -124,7 +124,7 @@ from_video(filename)
 * Time taken to run inference on Nvidia Tesla K80 GPU is 2 sec per image and on CPU is 5 sec per Image.
 
 * Our pipeline can be deployed to work in real time.
-* Among all the opencv approaches we tried and came across, none was promising and as reliable as deep learning
+* Among all the opencv approaches we tried and came across, none was promising and as reliable as deep learning for segmentation task.
 
 ## References
 

@@ -2,65 +2,14 @@
 
 A robust solution to license plate recognition task in unconstrained conditions.
 
-* [Approach](#Approach )
-* [Training](#Training)
 * [Installation](#Installation)
 * [Usage](#Usage)
+* [Approach](#Approach )
+* [Training](#Training)
 * [Team](#Team)
 * [Conclusion](#Conclusion)
 * [References](#References)
 
-## Approach
-
-Here is a brief explanation of our approach. Our approach can be divided into three parts :
-
-1) License Plate detection
-
-2) Perspective transformation of LP
-
-3) Segmentation and recognition of characters
-
-### License Plate detection	
-
-For license plate detection, we used Yolo v3, a variant of Darknet, which originally is a 53 layer network, we used the inference code and weights from this [repo](https://github.com/alitourani/yolo-license-plate-detection). Yolo performed so well on multiple car images but it was missing number plates of distant cars. So along with this we included another object detection model WPOD-NET, in order to increase the robustness of our solution and we used the inference code and weights from this [repo](https://github.com/quangnhat185/Plate_detect_and_recognize). Also because of its smaller size as compared to yolo it didn’t have much effect on efficiency of license plate detection tasks.
-
-<div align="center">
-    <img src="assets/yolo_out.jpg" width=75%/>
-    <p><i><small>You can see an example of LP detection here.</small></i></p>
-</div>
-
-### Perspective transformation of LP
-
-After the first step, we are left with an image of license plate which might contain a tilted or warped license plate. So we now perform the four-point perspective transformation on the image by assuming the background of the license plate is lighter than the text written on it.
-
-<div align="center">
-    <img src="assets/fpt.jpg" width=75%/>
-    <p><i><small>You can see an example of perspective tranformation here.</small></i></p>
-</div>
-
-
-###  Segmentation and recognition
-
-In order to perform segmentation and recognition on cropped license plate, we used Detectron 2, Facebook AI Research's next generation library that provides state-of-the-art detection and segmentation algorithms. We used Mask R-CNN R50-FPN variant which is generally used for instance segmentation and classification.
-
-To train the detectron network we created our own dataset of 550 images which contains around 5000 characters labelled. So the output of the detectron network will be the bounding boxes around the characters in images and their class.
-
-<div align="center">
-    <img src="assets/sr_1.jpeg" width=75%/>
-    <img src="assets/sr_2.jpeg" width=75%/>
-    <p><i><small>You can see some examples of segmentation and classification of characteres.</small></i></p>
-</div>
-
-## Training
-
-Detectron 2 is widely used because of its speed in training and inference, the classification loss, and the bounding-box regression loss converged just after training for a few minutes. We chose Mask R-CNN R50-FPN variant and trained it using transfer learning with initial weights trained on COCO dataset.
-
-<div align="center">
-    <img src="assets/g1.png" width=60%/>
-    <img src="assets/g2.png" width=60%/>
-    <img src="assets/g3.png" width=60%/>
-    <p><i><small>These are the training curves for Bounding box regression loss, classification loss and total loss.</small></i></p>
-</div>
 
 ## Installation
 
@@ -112,6 +61,61 @@ from main import * # This includes functions required to run inference on test i
 filename = "test_video.mp4"
 from_video(filename)
 ```
+
+## Approach
+
+Here is a brief explanation of our approach. Our approach can be divided into three parts :
+
+1) License Plate detection
+
+2) Perspective transformation of LP
+
+3) Segmentation and recognition of characters
+
+### License Plate detection	
+
+For license plate detection, we used Yolo v3, a variant of Darknet, which originally is a 53 layer network, we used the inference code and weights from this [repo](https://github.com/alitourani/yolo-license-plate-detection). Yolo performed so well on multiple car images but it was missing number plates of distant cars. So along with this we included another object detection model WPOD-NET, in order to increase the robustness of our solution and we used the inference code and weights from this [repo](https://github.com/quangnhat185/Plate_detect_and_recognize). Also because of its smaller size as compared to yolo it didn’t have much effect on efficiency of license plate detection tasks.
+
+<div align="center">
+    <img src="assets/yolo_out.jpg" width=75%/>
+    <p><i><small>You can see an example of LP detection here.</small></i></p>
+</div>
+
+
+### Perspective transformation of LP
+
+After the first step, we are left with an image of license plate which might contain a tilted or warped license plate. So we now perform the four-point perspective transformation on the image by assuming the background of the license plate is lighter than the text written on it.
+
+<div align="center">
+    <img src="assets/fpt.jpg" width=75%/>
+    <p><i><small>You can see an example of perspective tranformation here.</small></i></p>
+</div>
+
+
+
+###  Segmentation and recognition
+
+In order to perform segmentation and recognition on cropped license plate, we used Detectron 2, Facebook AI Research's next generation library that provides state-of-the-art detection and segmentation algorithms. We used Mask R-CNN R50-FPN variant which is generally used for instance segmentation and classification.
+
+To train the detectron network we created our own dataset of 550 images which contains around 5000 characters labelled. So the output of the detectron network will be the bounding boxes around the characters in images and their class.
+
+<div align="center">
+    <img src="assets/sr_1.jpeg" width=75%/>
+    <img src="assets/sr_2.jpeg" width=75%/>
+    <p><i><small>You can see some examples of segmentation and classification of characteres.</small></i></p>
+</div>
+
+
+## Training
+
+Detectron 2 is widely used because of its speed in training and inference, the classification loss, and the bounding-box regression loss converged just after training for a few minutes. We chose Mask R-CNN R50-FPN variant and trained it using transfer learning with initial weights trained on COCO dataset.
+
+<div align="center">
+    <img src="assets/g1.png" width=60%/>
+    <img src="assets/g2.png" width=60%/>
+    <img src="assets/g3.png" width=60%/>
+    <p><i><small>These are the training curves for Bounding box regression loss, classification loss and total loss.</small></i></p>
+</div>
 
 ## Team
 
